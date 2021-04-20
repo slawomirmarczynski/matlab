@@ -24,7 +24,18 @@ colormap hot;
 z3 = (1 - r);
 contour(x, y, z3);
 
-view(166.749, 36.5859);
+loops = 40;
+M(loops) = struct('cdata',[],'colormap',[]);
+
+for j = 1 : loops
+    view(15, 30 + j);
+    drawnow;
+    M(j) = getframe;    
+end
+
+for i = 1:10
+    movie(M);
+end
 
 
 
