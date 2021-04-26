@@ -5,6 +5,8 @@ function dqdt = odefun(t, q)
     x = q(1);
     v = q(2);
     
+    global m0 s k;
+    
     m0 = 10.0; % kg
     s = 10; % sekundy
     k = 100;

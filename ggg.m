@@ -22,11 +22,14 @@ hold all;
 x = linspace(a, b, N);
 x = [x, xx];
 x = unique(x);
+
 myplot = plot(x, f(x),'-r', x, g(x), '-b');
+
 grid on;
 grid minor;
 xlabel 'oś x';
 ylabel 'oś y';
+
 legend([myplot], 'f(x)', 'g(x)');
 
 ylim([-2, 2]);
