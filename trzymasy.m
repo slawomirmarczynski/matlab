@@ -1,24 +1,21 @@
 global k
 
 for k = [300, 600, 1000]
-    ode45(@oblicz, [0, 25], [0, 0, 0, 10.0, 0, 0]);
+    ode45(@(t,q)oblicz(t,q,k), [0, 25], [0, 0, 0, 10.0, 0, 0]);
     hold all;
 end
 
-function dqdt = oblicz(t, q)
+function dqdt = oblicz(t, q, k)
     x1 = q(1);
     x2 = q(2);
     x3 = q(3);
     v1 = q(4);
     v2 = q(5);
     v3 = q(6);
-    
-    %k = 1000;
-    global k
-    
+        
     m1 = 0.1;
-    m2 = 0.2;
-    m3 = 0.3;
+    m2 = 0.1;
+    m3 = 0.6;
     
     F1 = -k * (x1 - x2);
     F2 =  k * (x1 - x2) - k * (x2 - x3);

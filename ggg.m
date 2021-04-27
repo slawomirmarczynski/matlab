@@ -6,7 +6,7 @@ b = 10;
 N = 1000;
 
 
-xL = fzero( @(cokolwiek) f(cokolwiek) - g(cokolwiek), [-1000, 4.9999]);
+xL = fzero( @(x) f(x) - g(x), [-1000, 4.9999]);
 xR = fzero( @(x) f(x) - g(x), [5.0001, 1000]);
 
 xi = linspace(xL, xR, N);
@@ -23,7 +23,7 @@ x = linspace(a, b, N);
 x = [x, xx];
 x = unique(x);
 
-myplot = plot(x, f(x),'-r', x, g(x), '-b');
+myplot = plot(x, f(x),'-r', x, g(x), '--b');
 
 grid on;
 grid minor;
