@@ -1,9 +1,9 @@
 % Problem - jakie siły (co do wartości) występują gdy
 % w specyficzny sposób umocujemy małą kulkę na sprężynkach?
 
-a = 0.10; % metry
-b = 0.10; % metry
-c = 0.10; % metry
+a = 0.50; % metry
+b = 0.50; % metry
+c = 0.20; % metry
 
 k = 1000; % N/m
 
@@ -24,42 +24,42 @@ L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
 dL = L - L0;
 dU = dU + k/2 * dL.^2;            
 
-% xs = +a/2; ys = -b/2; zs = -c/2;
-% L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
-% dL = L - L0;
-% dU = dU + k/2 * dL.^2;            
+xs = +a/2; ys = -b/2; zs = -c/2;
+L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
+dL = L - L0;
+dU = dU + k/2 * dL.^2;            
 
-% xs = -a/2; ys = +b/2; zs = -c/2;
-% L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
-% dL = L - L0;
-% dU = dU + k/2 * dL.^2;            
+xs = -a/2; ys = +b/2; zs = -c/2;
+L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
+dL = L - L0;
+dU = dU + k/2 * dL.^2;            
 
 xs = +a/2; ys = +b/2; zs = -c/2;
 L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
 dL = L - L0;
 dU = dU + k/2 * dL.^2;            
 
-% xs = -a/2; ys = -b/2; zs = +c/2;
-% L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
-% dL = L - L0;
-% dU = dU + k/2 * dL.^2;            
+xs = -a/2; ys = -b/2; zs = +c/2;
+L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
+dL = L - L0;
+dU = dU + k/2 * dL.^2;            
 
-% xs = +a/2; ys = -b/2; zs = +c/2;
-% L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
-% dL = L - L0;
-% dU = dU + k/2 * dL.^2;            
+xs = +a/2; ys = -b/2; zs = +c/2;
+L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
+dL = L - L0;
+dU = dU + k/2 * dL.^2;            
 
 xs = -a/2; ys = +b/2; zs = +c/2;
 L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
 dL = L - L0;
 dU = dU + k/2 * dL.^2;            
 
-% xs = +a/2; ys = +b/2; zs = +c/2;
-% L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
-% dL = L - L0;
-% dU = dU + k/2 * dL.^2;            
+xs = +a/2; ys = +b/2; zs = +c/2;
+L = sqrt((x - xs).^2 + (y - ys).^2 + (z - zs).^2);
+dL = L - L0;
+dU = dU + k/2 * dL.^2;            
 
-F = - dU ./ delta;
+F = abs(- dU ./ delta);
 
 surf(x, y, z, F);
 axis equal;
