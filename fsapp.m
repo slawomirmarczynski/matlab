@@ -85,6 +85,7 @@ function W = create_W(x, mh, mp)
     W = zeros(n, mp + 2 * mh);
     for k = 1 : mp
         W(:, k) = x(:).^k;
+        
     end
     for k = 1:mh
         W(:, k + mp) = sin(k * x(:));
