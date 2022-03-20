@@ -33,7 +33,6 @@ function [yi, p, a, b] = fsapp(x, y, xi, mh, mp)
 
     n = length(x);
     ni = length(xi);
-
   
     if nargin < 5
         mp = 1;
@@ -42,7 +41,6 @@ function [yi, p, a, b] = fsapp(x, y, xi, mh, mp)
     if nargin < 4
         mh = fix(n / 4);
     end
-
 
     minx = min(x);
     maxx = max(x);
