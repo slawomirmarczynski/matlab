@@ -23,11 +23,15 @@ clf;
 hold all;
 plot(x,y, 'or');
 
-
 xi = linspace(out_low, out_high, out_N);
-yi = fsapp(x, y, xi, 6, 2);
-plot(xi, yi, '-b');
 
+for m = 5:20
+    yi = fsapp(x, y, xi, m, 2);
+    plot(xi, yi, 'c-');
+end
+
+yi = fsapp(x, y, xi, 10, 2);
+plot(xi, yi, '-b');
 
 x_value = 2.7;
 [y_value, p, a, b] = fsapp(x, y, x_value, 3, 2)

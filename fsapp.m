@@ -1,26 +1,26 @@
 function [yi, p, a, b] = fsapp(x, y, xi, mh, mp)
-% fsapp
-%
-% Aproksymacja danych przy pomocy szeregu Fouriera.
-%
-%       yi = fsapp(x, y, xi, mh, mp)
-%
-% Dane:
-%
-%       x  -- wektor odciętych
-%       y  -- wektor rzędnych
-%       xi -- wektor odciętych dla których mają być obliczone wartości yi
-%       mh -- ilość harmonicznych (5 oznacza że liczone będą sin(5*x) itd.)
-%       mp -- składniki wielomianowe (0 nie, 1 tylko stała, 2 liniowy itd.)
-%
-% Wyniki:
-%
-%       yi -- wektor z wartościami obliczonymi z szeregu Fouriera
-%       p  -- współczynniki wielomianu p(0) + p(1) * x**2 + ...
-%       a  -- współczyniki przy sinusach
-%       b  -- współczynniki przy cosinusach
-%
-% 2022, dr Sławomir Marczyński
+    % fsapp
+    %
+    % Aproksymacja danych przy pomocy szeregu Fouriera.
+    %
+    %       yi = fsapp(x, y, xi, mh, mp)
+    %
+    % Dane:
+    %
+    %       x  -- wektor odciętych
+    %       y  -- wektor rzędnych
+    %       xi -- wektor odciętych dla których mają być obliczone wartości yi
+    %       mh -- ilość harmonicznych (5 oznacza że liczone będą sin(5*x) itd.)
+    %       mp -- składniki wielomianowe (0 nie, 1 tylko stała, 2 liniowy itd.)
+    %
+    % Wyniki:
+    %
+    %       yi -- wektor z wartościami obliczonymi z szeregu Fouriera
+    %       p  -- współczynniki wielomianu p(0) + p(1) * x**2 + ...
+    %       a  -- współczyniki przy sinusach
+    %       b  -- współczynniki przy cosinusach
+    %
+    % 2022, dr Sławomir Marczyński
 
     x = x(:);
     y = y(:);
@@ -34,7 +34,7 @@ function [yi, p, a, b] = fsapp(x, y, xi, mh, mp)
     n = length(x);
     ni = length(xi);
 
-  
+
     if nargin < 5
         mp = 1;
     end
@@ -53,7 +53,7 @@ function [yi, p, a, b] = fsapp(x, y, xi, mh, mp)
     xi = 2*pi * (xi - minx) / (maxx - minx);
 
     % Utworzenie macierzy W
-    
+
     W = create_W(x, mh, mp);
 
     % Rozwiązanie równania
@@ -84,7 +84,7 @@ function W = create_W(x, mh, mp)
     n = length(x);
     W = zeros(n, mp + 2 * mh);
     for k = 1 : mp
-        W(:, k) = x(:) .^ k;
+        W(:, k) = x(:) .^ (k-1);
     end
     for k = 1:mh
         W(:, k + mp) = sin(k * x(:));
