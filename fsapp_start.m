@@ -48,12 +48,13 @@ mp = 2;
 
 figure(1);  % okno do rysowania, wywołanie figure(1) uwidoczni gdy zakryte
 clf;        % resetowanie wszystkich ustawień, wymazywanie zawartości
+subplot(3, 1, [1, 2]); % Górny wykres
 hold all;   % kolejne operacje nie będą niszczyły rzeczy już narysowanych
 
 % Rysowanie lekko widocznych krzywych uzyskanych z różnorodnymi opcjami.
 
 low_mh = 1;
-high_mh = 55;
+high_mh = fix(length(x) / 4); 
 for mh = low_mh : high_mh
     yi = fsapp(x, y, xi, mh, mp);  % obliczanie aproksymacji
     plot(xi, yi, 'cyan');          % rysowanie
@@ -67,7 +68,12 @@ plot(x,y, 'red-o', 'MarkerSize', 5, 'MarkerFace', 'yellow', 'LineWidth', 2);
 
 mh = 10;
 [yi, p, a, b] = fsapp(x, y, xi, mh, mp);  % obliczanie aproksymacji
-plot(xi, yi, 'blue', 'LineWidth', 1.5);         % rysowanie
+plot(xi, yi, 'blue', 'LineWidth', 1.5);   % rysowanie
+
+% Linia trendu nieokresowego
+
+ypi = fsapp(x, y, xi, 0, mp);
+plot(xi, ypi, 'k--');
 
 % Dopracowanie szczegółów takich jak opis osi.
 
@@ -76,6 +82,25 @@ grid minor;
 xlabel 'x';
 ylabel 'y';
 title 'aproksymacja szeregiem fouriera';
+
+subplot(3, 1, 3);  % dolny wykres
+hold all;
+
+y_poly = fsapp(x, y, x, 0, mp);
+y_removed_poly = y - y_poly;
+yi_removed_poly = fsapp(x, y_removed_poly, xi, mh, 0);
+
+plot(x,y_removed_poly, 'red-o', 'MarkerSize', 5, 'MarkerFace', 'yellow', 'LineWidth', 2);
+plot(xi, yi_removed_poly, 'blue', 'LineWidth', 1.5);
+
+% Dopracowanie szczegółów takich jak opis osi.
+
+grid on;
+grid minor;
+xlabel 'x';
+ylabel 'y';
+title 'usunięty trend nieokresowy';
+
 
 % Wypisanie obliczonych parametrów.
 
