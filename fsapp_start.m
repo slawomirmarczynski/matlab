@@ -101,3 +101,19 @@ fprintf('\n');
 for m = 1:mh
     fprintf('a%02d = %20.015f \tb%02d = %20.015f\n', m, a(m), m, b(m));
 end
+
+% Dopisywanie wyników jako kolejnej jednej linii do pliku.
+% Kolejno: mp, mh, wartości p, wartości a, wartości b.
+
+fid = fopen('fsapp.output.txt','a');
+fprintf(fid, '%d\t%d', mp, mh);
+for m = 1:mp
+    fprintf(fid, '\t%g', m, p(m));
+end
+for m = 1:mh
+    fprintf(fid, '\t%g', a(m));
+end
+for m = 1:mh
+    fprintf(fid, '\t%g', b(m));
+end
+fprintf(fid,'\n');
