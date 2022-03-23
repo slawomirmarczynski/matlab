@@ -22,6 +22,10 @@ function [yi, p, a, b] = fsapp(x, y, xi, mh, mp)
     %
     % 2022, dr Sławomir Marczyński
 
+    if nargin == 0
+        error 'fsapp jest funkcją i nie może być wywoływana jako skrypt';
+    end
+
     x = x(:);
     y = y(:);
     s = size(xi);
@@ -83,7 +87,7 @@ end
 function W = create_W(x, mh, mp)
     n = length(x);
     W = zeros(n, mp + 2 * mh);
-    for k = 1 : mp
+    for k = 1:mp
         W(:, k) = x(:) .^ (k-1);
     end
     for k = 1:mh
