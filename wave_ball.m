@@ -4,7 +4,7 @@ t_end = 4;
 global N L k m;
 
 N = 10;
-L = 0.01; % metrów
+L = 0.01; % metrÃ³w
 k = 100;  % N/m
 m = 0.10; % kg
 
@@ -21,7 +21,8 @@ grid on;
 grid minor;
 title 'fala mechaniczna';
 xlabel 'czas, sekundy';
-ylabel 'wspó³rzêdna x, metry';
+ylabel 'wspÃ³Å‚rzÄ™dna x, metry';
+
 
 function dqdt = problem(t, q)
     
